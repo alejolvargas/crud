@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, { useState } from "react";
 import CrupForm from "./CrupForm";
 import CrupTable from "./CrupTable";
 
@@ -14,34 +14,53 @@ const initDatos = [
         origin: "imternational",
     },
     {
-        id: 1,
+        id: 3,
         mark: "totto",
         origin: "nacional",
     },
     {
-        id: 1,
+        id: 4,
         mark: "rebbok",
         origin: "imternational",
     },
     {
-        id: 1,
+        id: 5,
         mark: "croydon",
         origin: "national",
-    }
+    },
 ];
 
 const CrupApp = () => {
+    const [dt, setDt] = useState(initDatos);
+    const [datoEdit, setDatoEdit] = useState(null);
 
-    const [data, setData] = useState(initDatos);
+    const createData = (data) => { 
+        data.id = Date.now();
+        setDt([
+            ...dt,
+            data
+        ])
+    };
 
-    return(
+    const updateData = (data) => { };
+
+    const deleteData = (id) => { };
+
+    return (
         <div>
             <h2>hola crup</h2>
-            <CrupForm />
-            <CrupTable data={data} />
-            
+            <CrupForm
+                createData={createData}
+                updateData={updateData}
+                datoEdit={datoEdit}
+                setDatoEdit={setDatoEdit}
+            />
+            <CrupTable dt={dt}
+                setDatoEdit={setDatoEdit}
+                deleteData={deleteData}
+            />
         </div>
-    )
-}
+    );
+};
 
 export default CrupApp;

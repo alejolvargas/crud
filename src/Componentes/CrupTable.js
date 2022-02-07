@@ -1,7 +1,7 @@
 import React from "react";
 import CrupTablaRow from "../CrupTablaRow";
 
-const CrupTable = ({data}) => {
+const CrupTable = ({dt}) => {
     return(
         <div>
             <h3>tabla de datos</h3>
@@ -14,11 +14,11 @@ const CrupTable = ({data}) => {
                     </tr>
                 </thead>
                 <tbody>
-                  {data.length === 0 ? (
+                  {dt.length === 0 ? (
                       <tr>
                         <td colSpan="3">Sin datos</td>
                       </tr>) : (
-                        data.map((el) => <CrupTablaRow key={el.id} el={el} />)
+                        dt.map((el) => <CrupTablaRow key={el.id} el={el} />)
                       )}
                 </tbody>
             </table>

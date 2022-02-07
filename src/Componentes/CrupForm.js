@@ -2,19 +2,41 @@ import React, { useState, useEffect } from "react";
 
 const initForm = {
     id: null,
-    origin: "",
-    mark: ""
+    mark: "",
+    origin: ""
 }
 
-const CrupForm = () => {
+const CrupForm = ({createData, updateData, datoEdit, setDatoEdit}) => {
 
     const [form, setFrom] = useState(initForm);
 
-    const handlerChanger = (e) => { };
+    const handlerChanger = (e) => {
+        setFrom({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+    };
 
-    const handlerSubmit = (e) => { };
+    const handlerSubmit = (e) => {
+        e.preventDefault();
+        if(!form.mark || !form.origin){
+            alert("FALTAN DATOS POR LLENAR");
+            return;
+        }
 
-    const handlerReset = (e) => { };
+        if(form.id === null){
+            createData(form);
+        }else{
+            updateData(form)
+        }
+
+        handlerReset();
+    };
+
+    const handlerReset = (e) => { 
+        setFrom(initForm);
+        setDatoEdit(null);
+    };
 
     return (
         <div>
