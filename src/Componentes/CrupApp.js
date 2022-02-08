@@ -58,13 +58,15 @@ const CrupApp = () => {
   return (
     <div>
       <h2>hola crup</h2>
-      <CrupForm
-        createData={createData}
-        updateData={updateData}
-        datoEdit={datoEdit}
-        setDatoEdit={setDatoEdit}
-      />
-      <CrupTable dt={dt} setDatoEdit={setDatoEdit} deleteData={deleteData} />
+      <secction className="templay-grid">
+        <CrupForm
+          createData={createData}
+          updateData={updateData}
+          datoEdit={datoEdit}
+          setDatoEdit={setDatoEdit}
+        />
+        <CrupTable dt={dt} setDatoEdit={setDatoEdit} deleteData={deleteData} />
+      </secction>
     </div>
   );
 };
