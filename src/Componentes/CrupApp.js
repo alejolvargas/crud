@@ -44,7 +44,16 @@ const CrupApp = () => {
     setDt(newData);
   };
 
-  const deleteData = (id) => {};
+  const deleteData = (id) => {
+    let isDelete = window.confirm(`seguro de eliminar '${id}'?`);
+
+    if (isDelete) {
+      let newData = dt.filter((el) => el.id !== id);
+      setDt(newData);
+    } else {
+      return;
+    }
+  };
 
   return (
     <div>
