@@ -2,36 +2,8 @@ import React, { useState } from "react";
 import CrupForm from "./CrupForm";
 import CrupTable from "./CrupTable";
 
-const initDatos = [
-  {
-    id: 1,
-    mark: "adidas",
-    origin: "international",
-  },
-  {
-    id: 2,
-    mark: "nike",
-    origin: "international",
-  },
-  {
-    id: 3,
-    mark: "totto",
-    origin: "nacional",
-  },
-  {
-    id: 4,
-    mark: "rebbok",
-    origin: "international",
-  },
-  {
-    id: 5,
-    mark: "croydon",
-    origin: "national",
-  },
-];
-
-const CrupApp = () => {
-  const [dt, setDt] = useState(initDatos);
+const CrupApi = () => {
+  const [dt, setDt] = useState([]);
   const [datoEdit, setDatoEdit] = useState(null);
 
   const createData = (data) => {
@@ -57,7 +29,7 @@ const CrupApp = () => {
 
   return (
     <div>
-      <h2>crup con codigo duro</h2>
+      <h2>crup a una api falsa mediante json server</h2>
       <secction className="templay-grid">
         <CrupForm
           createData={createData}
@@ -71,4 +43,4 @@ const CrupApp = () => {
   );
 };
 
-export default CrupApp;
+export default CrupApi;

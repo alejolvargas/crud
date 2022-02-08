@@ -1,0 +1,29 @@
+{
+  "articulos": [
+    {
+      "id": 1,
+      "mark": "adidas",
+      "origin": "international"
+    },
+    {
+      "id": 2,
+      "mark": "nike",
+      "origin": "international"
+    },
+    {
+      "id": 3,
+      "mark": "totto",
+      "origin": "nacional"
+    },
+    {
+      "id": 4,
+      "mark": "rebbok",
+      "origin": "international"
+    },
+    {
+      "id": 5,
+      "mark": "croydon",
+      "origin": "national"
+    }
+  ]
+}
