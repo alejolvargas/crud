@@ -2,7 +2,6 @@ import React from "react";
 
 const CrupTablaRow = ({ el, setDatoEdit, deleteData }) => {
   let { mark, origin, id } = el;
-  console.log(id);
 
   return (
     <tr>
