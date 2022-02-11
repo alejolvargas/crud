@@ -30,20 +30,59 @@ const CrupApi = () => {
   }, []);
   const createData = (data) => {
     data.id = Date.now();
-    setDt([...dt, data]);
+    let options = {
+      body: data,
+      headers: { "content-type": "application/json" },
+    };
+
+    api.post(url, options).then((res) => {
+      console.log(res); // el data que se envio por el metdod post
+      console.log(data); // el dato local
+      if (!res.err) {
+        setDt([...dt, data]);
+      } else {
+        setError(res);
+      }
+    });
   };
 
   const updateData = (data) => {
-    let newData = dt.map((el) => (el.id === data.id ? data : el));
-    setDt(newData);
+    let options = {
+      body: data,
+      headers: { "content-type": "application/json" },
+    };
+    const editUrl = `${url}/${data.id}`;
+    console.log(editUrl);
+    api.put(editUrl, options).then((res) => {
+      console.log(res);
+      if (!res.err) {
+        let newData = dt.map((el) => (el.id === res.id ? res : el));
+        setDt(newData);
+      } else {
+        setError(res);
+      }
+    });
+    //let newData = dt.map((el) => (el.id === data.id ? data : el));
+    //setDt(newData);
   };
 
   const deleteData = (id) => {
     let isDelete = window.confirm(`seguro de eliminar '${id}'?`);
+    let urlDelete = `${url}/${id}`;
 
+    let options = {
+      headers: { "content-type": "application/json" },
+    };
     if (isDelete) {
-      let newData = dt.filter((el) => el.id !== id);
-      setDt(newData);
+      api.del(urlDelete, options).then((res) => {
+        console.log(res);
+        if (!res.err) {
+          let newData = dt.filter((el) => el.id !== id);
+          setDt(newData);
+        } else {
+          setError(res);
+        }
+      });
     } else {
       return;
     }

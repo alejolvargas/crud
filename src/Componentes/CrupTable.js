@@ -14,11 +14,7 @@ const CrupTable = ({ dt, setDatoEdit, deleteData }) => {
           </tr>
         </thead>
         <tbody>
-          {dt.length === 0 ? (
-            <tr>
-              <td colSpan="3">Sin datos</td>
-            </tr>
-          ) : (
+          {dt.length > 0 ? (
             dt.map((el) => (
               <CrupTablaRow
                 key={el.id}
@@ -27,6 +23,10 @@ const CrupTable = ({ dt, setDatoEdit, deleteData }) => {
                 deleteData={deleteData}
               />
             ))
+          ) : (
+            <tr>
+              <td colSpan="3">Sin datos</td>
+            </tr>
           )}
         </tbody>
       </table>
