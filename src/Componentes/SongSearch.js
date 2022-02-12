@@ -10,7 +10,8 @@ const SongSearch = () => {
   const [loader, setLoader] = useState(false);
 
   const handlerSearch = (data) => {
-    console.log(data);
+    setSearch(data);
+    console.log(search);
   };
 
   return (
