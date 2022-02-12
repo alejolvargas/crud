@@ -1,9 +1,13 @@
 import React from "react";
 
-const SongLyric = () => {
+const SongLyric = ({ title, songLyric }) => {
+  let { lyrics } = songLyric;
+
   return (
     <div>
-      <h2>letra cancion</h2>
+      <h2>{title}</h2>
+      <h3>letra</h3>
+      <p style={{ whiteSpace: "pre-wrap" }}>{lyrics}</p>
     </div>
   );
 };

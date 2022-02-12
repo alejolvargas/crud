@@ -4,24 +4,23 @@ import SongArtist from "./SongArtist";
 import SongLyric from "./SongLyric";
 
 const SongDetails = ({ search, bio, songLyric }) => {
+  let { song, artist } = search;
+
   if (!bio && !songLyric) return null;
   return (
     <>
+      {bio.artists ? (
+        <SongArtist artist={artist} bio={bio} />
+      ) : (
+        <Message msg={`El artista: ${artist} no existe`} bgColor="#fbff00" />
+      )}
       {songLyric.error || songLyric.err || songLyric.name === "AbortError" ? (
         <Message
-          msg={`la letra de cancion: ${search.song} no existe`}
+          msg={`la letra de cancion: ${song} no existe`}
           bgColor="#fbff00"
         />
       ) : (
-        <SongLyric />
-      )}
-      {bio.artists ? (
-        <SongArtist />
-      ) : (
-        <Message
-          msg={`El artista: ${search.artist} no existe`}
-          bgColor="#fbff00"
-        />
+        <SongLyric title={song} songLyric={songLyric} />
       )}
     </>
   );
